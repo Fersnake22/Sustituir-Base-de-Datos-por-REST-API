@@ -8,7 +8,7 @@ mongo=PyMongo(app)
 
 @app.route('/', methods=['POST'])
 
-def create_user():
+def agregar_palabra():
 
 	palabra = request.json['palabra']
 	significado = request.json['significado']
@@ -29,9 +29,9 @@ def create_user():
 	return {'message':'received'}
 
 @app.route("/",methods=['GET'])
-def get_users():
-	users = mongo.db.slangdic.find()
-	response=json_util.dumps(users)
+def get_palabras():
+	palabras = mongo.db.slangdic.find()
+	response=json_util.dumps(palabras)
 	return Response(response, mimetype='application/json')
 
 
